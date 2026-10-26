@@ -2,6 +2,8 @@
 
 Research and planning repository for evaluating Cloudflare Zero Trust as a controlled-access, VPN-style solution for company systems.
 
+**Continuing on another PC or in a new chat?** Start with [the project handoff](HANDOFF.md): current context, verified results, setup instructions, next actions and a ready-to-use prompt.
+
 ## Status
 
 **Live login baseline verified.** Zero Trust Free is active and the sample app is deployed to Cloudflare Workers behind Access. Anonymous and forged-header requests redirect to login. The exact tester completed an authenticator challenge and reached the page after signed-token verification. Direct Google Workspace integration and device approval are later stages. No company systems are connected.
