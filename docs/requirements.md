@@ -4,7 +4,7 @@ Status: draft for stakeholder validation
 
 Phase: isolated lab implementation; company discovery remains open
 
-PoC implementation: local application and reusable configuration built; live Cloudflare, Google login, and device enforcement not yet verified
+PoC implementation: local application and hosted Workers login lab built; anonymous/forged-header Access redirects and successful authenticator sign-in verified. Direct Google integration and device enforcement remain unverified.
 
 ## 1. Problem statement
 

@@ -1,0 +1,5 @@
+# Copy to worker/.dev.vars for local Wrangler development only; Git ignores it.
+# Set the same keys as runtime variables in the deployed Worker's dashboard.
+# These are application settings, not passwords, but keep account details private.
+# ACCESS_TEAM_DOMAIN=https://your-team.cloudflareaccess.com
+# ACCESS_AUD=your-64-character-application-audience-tag

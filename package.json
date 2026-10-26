@@ -7,7 +7,12 @@
   "packageManager": "pnpm@11.25.0",
   "scripts": {
     "start": "node --env-file-if-exists=poc/.env poc/server.mjs",
-    "test": "node --test poc/*.test.mjs"
+    "test": "node --test poc/*.test.mjs worker/*.test.mjs",
+    "build:worker": "node scripts/build-worker.mjs",
+    "check:worker": "wrangler deploy --config worker/wrangler.jsonc --dry-run --outdir ../dist/worker-check",
+    "dev:worker": "wrangler dev --config worker/wrangler.jsonc --ip 127.0.0.1 --port 8788",
+    "deploy:worker": "wrangler deploy --config worker/wrangler.jsonc"
   },
-  "dependencies": { "jose": "6.2.13" }
+  "dependencies": { "jose": "6.2.13" },
+  "devDependencies": { "esbuild": "0.28.2", "wrangler": "4.152.0" }
 }

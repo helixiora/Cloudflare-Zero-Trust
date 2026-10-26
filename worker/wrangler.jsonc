@@ -1,0 +1,13 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "zt-lab-demo",
+  "main": "../dist/worker/worker.mjs",
+  "compatibility_date": "2026-10-26",
+  "workers_dev": true,
+  "preview_urls": false,
+  "keep_vars": true,
+  "no_bundle": true,
+  "send_metrics": false,
+  "observability": { "enabled": false },
+  "build": { "command": "node scripts/build-worker.mjs", "cwd": "." }
+}

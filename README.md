@@ -4,7 +4,7 @@ Research and planning repository for evaluating Cloudflare Zero Trust as a contr
 
 ## Status
 
-**PoC started — isolated sample application.** The local demo, Access-token verification, automated security tests, and reusable Cloudflare configuration are implemented. Real Google sign-in and device-policy enforcement still require connecting the Cloudflare account and running the live tests. No company systems are connected.
+**Live login baseline verified.** Zero Trust Free is active and the sample app is deployed to Cloudflare Workers behind Access. Anonymous and forged-header requests redirect to login. The exact tester completed an authenticator challenge and reached the page after signed-token verification. Direct Google Workspace integration and device approval are later stages. No company systems are connected.
 
 ## Try the demo
 
@@ -17,16 +17,17 @@ pnpm start
 
 Open `http://127.0.0.1:8787`. The introduction page works immediately; the protected page deliberately stays locked until Cloudflare is configured.
 
-Start with the [plain-language PoC guide](docs/poc-guide.md). The [operator runbook](docs/poc-runbook.md) covers connecting Cloudflare, Google login, device checks, and rollback.
+Start with the [plain-language PoC guide](docs/poc-guide.md). The [Workers lab guide](docs/worker-lab.md) covers the current domainless deployment. The [operator runbook](docs/poc-runbook.md) covers the later tunnel, Google login, and device checks.
 
 ```powershell
 pnpm test
+pnpm check:worker
 terraform -chdir=infra init -backend=false
 terraform -chdir=infra validate
 terraform -chdir=infra test
 ```
 
-The Terraform tests use a mocked provider and never create Cloudflare resources. The application tests use temporary signing keys, not real accounts or tokens.
+The Terraform tests use a mocked provider and never create Cloudflare resources. The application tests use temporary signing keys, not real accounts or tokens. The Workers check builds the deployment package without uploading it.
 
 ## Pilot direction
 
@@ -49,6 +50,7 @@ This lets us test the core proposition — only an approved user on an approved,
 - [Action plan](docs/action-plan.md) — phase gates from discovery through a later PoC and rollout decision.
 - [PoC guide](docs/poc-guide.md) — what is built and the next simple steps.
 - [PoC operator runbook](docs/poc-runbook.md) — live setup and recovery instructions.
+- [Workers lab guide](docs/worker-lab.md) — hosted login experiment without changing DNS.
 - [Live test checklist](docs/poc-test-checklist.md) — evidence needed to prove real access and device enforcement.
 
 ## Proposed decision path

@@ -1,10 +1,10 @@
 # PoC operator runbook
 
-Implementation date: 2026-10-21. Status: local app and mocked configuration tests implemented; live deployment pending. The operator created a Cloudflare account with Google. Zero Trust Free activation reached a billing/overage authorization step, and the user explicitly deferred it until the sponsor is involved. Checkout was exited without activation by the agent.
+Initial implementation: 2026-10-21. Updated: 2026-10-26. Zero Trust Free activation was completed personally by the operator. A separate Workers login lab is deployed; see [the Workers guide](worker-lab.md). The tunnel configuration described below has not been applied, and direct Google integration/device enforcement are not yet proven.
 
 ## Architecture and boundary
 
-This first lab uses a **published sample web application**, with Access protecting the entire hostname. It tests the identity/device proposition; it does not claim to replace arbitrary TCP/UDP VPN access.
+This runbook describes the **tunnel variant** of the sample web application, with Access protecting the entire hostname. The current domainless Workers variant uses the same token verification and has its own setup guide. Neither variant claims to replace arbitrary TCP/UDP VPN access.
 
 ```text
 Browser on approved test device
@@ -37,7 +37,7 @@ Complete Cloudflare signup using the operator's work Google account. Select **Ze
 
 Create a distinct Zero Trust team name and note it privately. Sign-in to the Cloudflare dashboard and sign-in to an Access-protected application are separate integrations: using Google for the dashboard does not automatically configure Google for the sample app.
 
-Use an existing active DNS zone in the test account and a new, unused first-level subdomain. The hostname and zone must belong together. Do not move company DNS or use a wildcard/multi-level hostname for this lab. If there is no suitable active zone, pause the public-hostname deployment and select a domainless/private-access design or an already-controlled test domain first. Do not buy a domain implicitly.
+For this tunnel variant, use an existing active DNS zone in the test account and a new, unused first-level subdomain. The hostname and zone must belong together. Do not move company DNS or use a wildcard/multi-level hostname for this lab. Without a suitable active zone, use [the Workers variant](worker-lab.md) for login/device learning first. Do not buy a domain implicitly.
 
 ## 3. Configure Google and device prerequisites
 

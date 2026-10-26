@@ -12,15 +12,17 @@ The experiment asks: **can an approved person open this page from an approved de
 - Verification of Cloudflare's signed login tokens, including their signature, issuer, expiry, and intended application.
 - Reusable configuration for one Cloudflare Access application, one tunnel, one test address, exact test users, MFA, and device checks.
 - Automated checks for forged/expired logins and unsafe configuration.
+- A hosted Workers version, protected by Cloudflare Access without buying a domain or changing company DNS.
 - A live test checklist for the tests that must be done using real accounts and devices.
 
 ## What we do next
 
-1. Review **Zero Trust Free** activation with the sponsor. The account is created; billing/overage authorization was deferred at the user's request. No activation should be assumed.
-2. Agree a test address. Do not change the company's domain nameservers for this experiment. The included configuration expects an existing active Cloudflare DNS zone and one unused subdomain; if none is available, choose another test-hosting route before deploying.
-3. Connect Google as the login provider and allow only the named testers.
-4. Enroll the test devices and choose the device check, initially a specific lab-device inventory or existing management compliance signal.
-5. Connect the demo to Cloudflare and try opening the test address.
+1. **Login baseline completed.** Zero Trust Free is active. The exact tester enrolled an authenticator privately, completed its challenge, and reached the signed-token sample page. Anonymous and forged-header requests are redirected to login. A different-account denial and session expiry still need testing.
+2. **Test a device.** Choose a laptop with a supported operating system, enroll it, and require its approval in the policy. Then demonstrate that an unapproved device is blocked. This stage has not started.
+3. **Connect work Google sign-in.** This needs a separate Google integration. Signing into Cloudflare with a Google-linked account does not establish company Google Workspace integration.
+4. **Review with Walter.** Show the successful and failed attempts, agree who manages devices, and choose one low-risk company service for a later pilot.
+
+The current hosted page proves only what we actually test. A successful login alone does not mean the laptop is approved. The [Workers lab guide](worker-lab.md) records the current setup; the tunnel configuration remains available for the later internal-service experiment.
 
 We can recreate the configuration in a company Cloudflare account later. That requires new account-specific values, Google integration, tunnel credentials, and device registrations; switching is not an automatic account merge.
 
