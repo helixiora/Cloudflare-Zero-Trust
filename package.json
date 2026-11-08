@@ -13,6 +13,6 @@
     "dev:worker": "wrangler dev --config worker/wrangler.jsonc --ip 127.0.0.1 --port 8788",
     "deploy:worker": "wrangler deploy --config worker/wrangler.jsonc"
   },
-  "dependencies": { "jose": "6.2.13" },
-  "devDependencies": { "esbuild": "0.28.2", "wrangler": "4.152.0" }
+  "dependencies": { "jose": "6.2.15" },
+  "devDependencies": { "esbuild": "0.28.2", "wrangler": "4.158.0" }
 }
